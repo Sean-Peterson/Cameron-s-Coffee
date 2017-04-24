@@ -1,0 +1,56 @@
+<?php
+
+function queen_attack_menu() {
+    $items['queen_attack'] = array(
+        'title' => 'Queen Attack',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('queen_attack_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['queen_attack_answer_page'] = array(
+        'title' => 'Answer',
+        'page callback' => 'queen_attack_answer',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function queen_attack_form() {
+    $form['queen_x'] = array(
+        '#title' => 'Queen X',
+        '#type' => 'textfield',
+        '#description' => t("Enter the Queen's X axis."),
+    );
+
+    $form['queen_y'] = array(
+        '#title' => 'Queen Y',
+        '#type' => 'textfield',
+        '#description' => t("Enter the Queen's Y axis."),
+    );
+
+    $form['target_x'] = array(
+        '#title' => 'Target X',
+        '#type' => 'textfield',
+        '#description' => t("Enter the Targets's X axis."),
+    );
+
+    $form['target_y'] = array(
+        '#title' => 'Target Y',
+        '#type' => 'textfield',
+        '#description' => t("Enter the Target's Y axis."),
+    );
+
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Check Vulnerability',
+    );
+
+    return $form;
+}
+
+function queen_attack_form_submit($form, $form_state) {
+    drupal_set_message($form_state['values']['queen_x']);
+    // var_dump($form_state['values']);
+}
