@@ -17,7 +17,16 @@ function greeting_menu() {
 }
 
 function say_hello() {
-    return '<p>Hello my dear friend!</p>';
+    $user_level = $GLOBALS['user']->roles;
+    if(isset($user_level[3])){ //admin view on login
+      return "<p>Welcome to the Admin view!</p>";
+    }else if (isset($user_level[2])){ //authenticated
+      return '<p>Nice to see you!</p>';
+    }else if (isset($user_level[1])) { //anonymous
+      return "Hello";
+    }else {
+      return 'thing';
+    }
 }
 
 function say_farewell() {
@@ -30,4 +39,8 @@ function greeting_user_login(){
 
 function greeting_user_logout(){
     $_GET['destination'] = 'farewell';
+}
+
+function greeting_comment_insert(){
+    drupal_set_message("Hi there!");
 }
