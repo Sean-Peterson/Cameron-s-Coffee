@@ -1,0 +1,6 @@
+name = Favorites
+description = Display Favorites.
+package = Favorites
+core = 7.x
+files[] = favorites.module
+stylesheets[all][] = favorites.css

@@ -1,0 +1,62 @@
+<?php
+function favorites_menu() {
+    $items = array();
+    $items['favorite'] = array(
+        'title' => 'Favorites',
+        'page callback' => 'favorites',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM
+    );
+    $items['favorite/customers'] = array(
+        'title' => 'customers',
+        'page callback' => 'customers',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+    $items['favorite/coffees'] = array(
+        'title' => 'coffees',
+        'page callback' => 'coffees',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+    $items['favorite/bagel'] = array(
+        'title' => 'bagel',
+        'page callback' => 'bagel',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+    return $items;
+}
+
+function favorites() {
+    return '
+        <ul>
+          <li><a href="/favorite/customers">Customers</a></li>
+          <li><a href="/favorite/coffees">Coffees</a></li>
+          <li><a href="/favorite/bagel">Bagels</a></li>
+        </ul>
+    ';
+}
+
+function customers() {
+    return '<ul>
+              <li><a href="/customers/Joe">Joe</a></li>
+              <li><a href="/customers/Zach">Zach</a></li>
+              <li><a href="/customers/Carlos">Carlos</a></li>
+            </ul>';
+}
+
+function coffees() {
+    return '<ul>
+              <li>espresso<img src="https://www.caffeineinformer.com/wp-content/caffeine/espresso.jpg"></li>
+              <li>drip<img src="http://knowyourgrinder.com/wp-content/uploads/2016/01/pour-over-drip-coffee.jpg"></li>
+            </ul>';
+}
+
+function bagel() {
+    return '<ul>
+              <li>everything</li>
+              <li>poppy</li>
+              <li>egg</li>
+            </ul>';
+}

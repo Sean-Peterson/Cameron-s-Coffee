@@ -1,0 +1,30 @@
+<?php
+function cards_menu() {
+    $items = array();
+    $items['customers/%'] = array(
+      'title' => 'Customer',
+      'page callback' => 'friendsCards',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'type' => MENU_NORMAL_ITEM
+    );
+    return $items;
+}
+// function cards_menu() {
+//     $items = array();
+//     $friends = array('Bob', 'Tim', 'Mike');
+//     foreach ($friends as $friend) {
+//       $items[$friend] = array(
+//         'title' => $friend,
+//         'page callback' => 'friendsCards',
+//         'page arguments' => array($friend),
+//         'access callback' => TRUE,
+//         'type' => MENU_NORMAL_ITEM
+//       );
+//     };
+//     return $items;
+// }
+
+function friendsCards($arg) {
+  return '<p>' . $arg . '</p>';
+}

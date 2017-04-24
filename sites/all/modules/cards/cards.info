@@ -1,0 +1,5 @@
+name = Cards
+description = Display Cards.
+package = Cards
+core = 7.x
+files[] = cards.module
