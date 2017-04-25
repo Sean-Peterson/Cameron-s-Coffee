@@ -1,0 +1,5 @@
+name = Likes
+description = Whatcha like?
+package = My First Modules
+core = 7.x
+files[] = likes.module

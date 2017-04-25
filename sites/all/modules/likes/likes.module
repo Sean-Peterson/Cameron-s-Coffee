@@ -1,0 +1,55 @@
+<?php
+function likes_menu (){
+    $items = array();
+    $items['likes'] = array(
+        'title' => 'Whatcha like?',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('likes_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    $items['likes_success'] = array(
+        'title' => 'You like these things',
+        'page callback' => 'user_likes',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function likes_form () {
+    $form['like_one'] = array(
+        '#title' => 'Tell me whatcha like :)',
+        '#type' => 'textfield',
+    );
+    $form['like_two'] = array(
+        '#type' => 'textfield',
+    );
+    $form['like_three'] = array(
+        '#type' => 'textfield',
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'G0',
+    );
+    return $form;
+}
+
+function likes_form_submit($form, &$form_state) {
+    $likes = array();
+    array_push($likes, $form_state['values']['like_one']);
+    array_push($likes, $form_state['values']['like_two']);
+    array_push($likes, $form_state['values']['like_three']);
+    $_SESSION['all_likes'] = $likes;
+    $form_state['redirect'] = 'likes_success';
+}
+
+function user_likes() {
+    $output = '<ul>';
+    foreach ($_SESSION['all_likes'] as $like) {
+        $output .= '<li>' . $like . '</li>';
+    }
+    $output .= '</ul>';
+    return $output;
+}

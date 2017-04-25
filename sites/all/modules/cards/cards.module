@@ -2,7 +2,9 @@
 function cards_menu() {
     $items = array();
     $items['customers/%'] = array(
-      'title' => 'Customer',
+      'title' => "Stuff",
+      'title callback' => 'titleFunction',
+      'title arguments' => array(1),
       'page callback' => 'friendsCards',
       'page arguments' => array(1),
       'access callback' => TRUE,
@@ -25,6 +27,10 @@ function cards_menu() {
 //     return $items;
 // }
 
+function titleFunction($arg){
+  return $arg;
+}
+
 function friendsCards($arg) {
-  return '<p>' . $arg . '</p>';
+  return '<p>' . $arg . ' is a customer</p>';
 }
