@@ -48,8 +48,8 @@ function customers() {
 
 function coffees() {
     return '<ul>
-              <li>espresso<img src="https://www.caffeineinformer.com/wp-content/caffeine/espresso.jpg"></li>
-              <li>drip<img src="http://knowyourgrinder.com/wp-content/uploads/2016/01/pour-over-drip-coffee.jpg"></li>
+              <li>drip<img src='.variable_get("file_public_path", conf_path()."/files/img/drip.jpg").'></li>
+              <li>espresso<img src="sites/all/modules/favorites/coffees/drip.jpg"></li>
             </ul>';
 }
 
